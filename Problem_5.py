@@ -2,11 +2,11 @@ def truth_value(X =[], Y =[]):
     for i in Y:
         for j in X:
            if j%i == 0:
-               print("True")
+               return True
            else:
-               print("False")
+               return False
 
 X = [10,20,30,40]
 Y = [2,4,8,10]
-truth_value(X,Y)
+print(truth_value(X,Y))
 
