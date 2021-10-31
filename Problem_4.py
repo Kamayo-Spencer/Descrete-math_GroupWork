@@ -55,31 +55,38 @@ def is_relation(A = [], R = []):
                     print("R is not symmetric :", k)
 
         # Finding out if R is Transitive or not
-        #
-        # [(2,4), (4,2)]
+        # Firstly we are going to loop through R
         for p in R:
-            # if p[0] != p[1]:
+            # We created a variable called trial that is initially empty. We will use it letter on
+            trial = None
+            # We looped through R again this time using u.
             for u in R:
+                '''
+                 We used one of the properties of a transitive i.e an element is transitive if [a,b],[b,c] then [a,c]
+                 Firstly we compared our first and second variables (p and u) in terms of [a,b],[b,c]
+                 then proceed to line 69
+                '''
                 if p[1] ==  u[0]:
-                    for q in R:
-                        # [(a,b),(b,c),(a,c)]
-                        if q[0] == p[0] and q[1] == u[1]:
-                            y1 = [p,u,q]
-                            # print("R is transitive :", p, u, q)
-                            # print(y1)
-                        else:
-                            y2 = [p,u,q]
+                    """We then stored p[0] and u[1] (which is of the form [a,c] to variable x"""
+                    x =[p[0],u[1]]
+                    # We are going to find out if x exists in R
+                    if x in R :
+                        pass
+                    else:
+                        #If x is not in R we are going to append it to a list
+                        trial = [p, u]
 
-                           # print("R is not transitive: ",p, u)
-
-        if y1 == y2:
+        # finding out if trial does not have any values
+        if trial is None:
             print("R is transitive")
         else:
-            print("R is not transitive :",y2[0], y2[1])
+            print("R is not transitive : ", trial)
+
     else:
         print("R is not a relation of A")
 
 
 A = [2, 1, 4, 6, 7, 3]
+# R = [[2,4],[4,2],[2,2],[4,4],[1,4]]
 R = [[2,4],[3,3],[1,1],[2,2],[7,7],[3,2],[6,6],[4,4],[2,3],[3,4],[4,2],[4,6],[6,4]]
 is_relation(A, R)
