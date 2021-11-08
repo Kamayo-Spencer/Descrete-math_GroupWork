@@ -6,10 +6,21 @@ def is_relation(A = [], R = []):
             list1.append(y)
 
     print(list1)
+    #Checking is R is a set
     list2 = []
+    lst =[]
+    for r in R:
+        if r not in lst:
+            lst.append(r)
+    if lst == R:
+        print("R is a set")
+
+    #Finding out if R is a relation of A*A
     for z in R:
-        if z in list1:
+        if z in list1 and z not in list2:
             list2.append(z)
+        else:
+            v = z
     if list2 == R:
         print("R is a relation on A")
 
@@ -83,10 +94,10 @@ def is_relation(A = [], R = []):
             print("R is not transitive : ", trial)
 
     else:
-        print("R is not a relation of A")
+        print("R is not a subset of A because the following element is in R but not in A*A:",v, "R is not a relation of A")
 
 
 A = [2, 1, 4, 6, 7, 3]
-# R = [[2,4],[4,2],[2,2],[4,4],[1,4]]
-R = [[2,4],[3,3],[1,1],[2,2],[7,7],[3,2],[6,6],[4,4],[2,3],[3,4],[4,2],[4,6],[6,4]]
+#R = [[2,4],[4,2],[2,2],[4,4],[1,4],[5,2]
+R = [[2,4],[3,3],[1,1],[2,2],[7,7],[3,2],[6,6],[4,4],[2,3],[3,4],[4,2],[4,6],[6,4],[5,2]]
 is_relation(A, R)
